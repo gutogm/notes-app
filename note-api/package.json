@@ -1,4 +1,6 @@
 {
+  "name": "note-api",
+  "version": "1.0.0",
   "scripts": {
     "watch": "nodemon -w src -e ts -x",
     "prebuild": "rimraf ./dist",
