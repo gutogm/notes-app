@@ -22,6 +22,11 @@ export class NoteListComponent implements OnInit {
     this.notes = notes;
   }
 
+  async search() {
+    const notes = await this.noteService.getNotes(this.searchTerm);
+    this.notes = notes;
+  }
+
 
   delete(id: string) {
     this.noteService.deleteNote(id);

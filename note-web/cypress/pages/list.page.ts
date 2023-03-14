@@ -4,7 +4,7 @@ export class ListPage {
   }
 
   setSearch(value: string) {
-    cy.get('input[type="text"]').clear().type(value);
+    cy.get('input[type="text"]').clear().type(`${value}{enter}`);
     cy.wait(500);
   }
 

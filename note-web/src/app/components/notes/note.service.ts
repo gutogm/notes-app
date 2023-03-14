@@ -10,8 +10,12 @@ export class NoteService {
 
   constructor() { }
 
-  public async getNotes() {
-    const response = await axios.get(this.apiUrl);
+  public async getNotes(title='') {
+    let query = '';
+    if(title) {
+      query = `title=${title}`;
+    }
+    const response = await axios.get(`${this.apiUrl}?${query}`);
     return response.data;
   }
 
