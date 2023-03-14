@@ -1,27 +1,28 @@
 # NoteWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+The note-web project is the client-side of a web application that allows users to create, read, update, and delete (CRUD) notes.
 
-## Development server
+This is built with Angular and communicates with the note-api back-end using HTTP requests to perform CRUD operations on the notes data
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
+Node.js v18
 
-## Code scaffolding
+## Local server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install dependencies: `npm install`
 
-## Build
+Run `npm run start` for a dev server.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Navigate to `http://localhost:4200/`. 
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running e2e (background)
 
-## Running end-to-end tests
+Run `npm start` (keep this process running)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Open another process and run `npm run cy:run`
 
-## Further help
+## Running e2e (headed)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `npm run cy:debug`
+

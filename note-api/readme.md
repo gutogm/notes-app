@@ -1,41 +1,72 @@
-API Documentation
---------------------------------------------
+Notes API
+=========
 
-This documentation describes the RESTful API provided by this service.
+This is the backend server for a notes app.
 
-### Notes
+Installation
+------------
 
-The following endpoints deal with notes.
+First, install [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/).
 
-#### List notes
+Then clone repository with:
 
-Retrieves a list of all notes.
+```bash
+git clone https://github.com/gutogm/notes-app.git
+cd notes-app/note-api
+```
 
-Request: `GET /notes`
+Install dependencies and start the server:
+
+```bash
+npm install
+npm run start
+```
+
+The API will be available at `http://localhost:3000`.
+
+Endpoints
+---------
+
+### GET /notes
+
+Get all notes.
 
 Response:
 
 ```json
 [
   {
-    "title": "Note title",
-    "content": "Note content"
+    "_id": "5fc291cc306247c797afb2af",
+    "title": "Test note",
+    "content": "Content of a test note",
   }
 ]
 ```
 
-#### Add note
+### GET /notes/:id
 
-Adds a new note.
+Get a specific note.
 
-Request: `POST /notes`
-
-Body:
+Response:
 
 ```json
 {
-  "title": "Note title",
-  "content": "Note content"
+  "_id": "5fc291cc306247c797afb2af",
+  "title": "Test note",
+  "content": "Content of a test note",
+}
+```
+
+### POST /notes
+
+Create a new note.
+
+Request:
+
+```json
+{
+  "title": "New note",
+  "content": "Content of the new note"
 }
 ```
 
@@ -43,47 +74,22 @@ Response:
 
 ```json
 {
-  "title": "Note title",
-  "content": "Note content"
+  "_id": "5fc291cc306247c797afb2af",
+  "title": "New note",
+  "content": "Content of the new note",
 }
 ```
 
-#### Get note by ID
+### PUT /notes/:id
 
-Retrieves a specific note by ID.
+Update a specific note.
 
-Request: `GET /notes/:id`
-
-Path parameters:
-
-*   `id` The unique identifier of the note
-
-Response:
+Request:
 
 ```json
 {
-  "_id": "<note-id>",
-  "title": "Note title",
-  "content": "Note content"
-}
-```
-
-#### Update note by ID
-
-Updates a specific note by ID.
-
-Request: `PUT /notes/:id`
-
-Path parameters:
-
-*   `id` The unique identifier of the note
-
-Body:
-
-```json
-{
-  "title": "New note title",
-  "content": "New note content"
+  "title": "Updated note",
+  "content": "Content of the updated note"
 }
 ```
 
@@ -91,26 +97,22 @@ Response:
 
 ```json
 {
-  "_id": "<note-id>",
-  "title": "New note title",
-  "content": "New note content"
+  "_id": "5fc291cc306247c797afb2af",
+  "title": "Updated note",
+  "content": "Content of the updated note",
 }
 ```
 
-#### Delete note by ID
+### DELETE /notes/:id
 
-Deletes a specific note by ID.
-
-Request: `DELETE /notes/:id`
-
-Path parameters:
-
-*   `id` The unique identifier of the note
+Delete a specific note.
 
 Response:
 
 ```json
 {
-  "message": "Note deleted successfully"
+  "_id": "5fc291cc306247c797afb2af",
+  "title": "Test note",
+  "content": "Content of a test note",
 }
 ```
