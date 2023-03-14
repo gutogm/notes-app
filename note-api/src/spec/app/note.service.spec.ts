@@ -24,7 +24,7 @@ describe('NoteService', () => {
       const mockNote2 = { title: 'Title 2', content: 'Content 2' } as INote;
       await Note.create([mockNote1, mockNote2]);
 
-      const result = await noteService.get({});
+      const result = await noteService.get();
       expect(result.length).toEqual(2);
       expect(result[0]).toEqual(jasmine.objectContaining({ ...mockNote1 }));
       expect(result[1]).toEqual(jasmine.objectContaining({ ...mockNote2 }));
@@ -36,7 +36,7 @@ describe('NoteService', () => {
       const mockNote2 = { title: 'Title 2', content: 'Content 2' } as INote;
       await Note.create([mockNote1, mockNote2]);
 
-      const result: any = await noteService.get({ title: 'Title 1' });
+      const result: any = await noteService.get('Title 1');
 
       expect(result[0]).toEqual(jasmine.objectContaining({ ...mockNote1 }));
     });

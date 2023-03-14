@@ -1,10 +1,18 @@
-import mongoose, { Model } from 'mongoose';
+import mongoose from 'mongoose';
 import { Note, INote } from './note';
 
 export class NoteService {
 
-  public async get(filter: object): Promise<Model<INote>[]> {
-    return Note.find(filter);
+  public async get(title: string = '', skip: number = 0, limit: number = 100): Promise<INote[]> {
+    let filter = {};
+    if (title) {
+      filter = {
+        title: { $regex: title, $options: "i" }
+      }
+    }
+    const notes = await Note.find(filter).skip(skip).limit(limit);
+
+    return notes;
   }
 
   public async getById(id: string): Promise<INote | null> {

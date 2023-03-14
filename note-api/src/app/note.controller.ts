@@ -8,7 +8,8 @@ export class NoteController {
     this.noteService = new NoteService();
   }
   public async getNotes(req: Request, res: Response) {
-    const notes = await this.noteService.get(req.query);
+    const { skip = 0, limit = 100, title = '' } = req.query;
+    const notes = await this.noteService.get(`${title}`, Number(skip), Number(limit));
     return res.json(notes);
   }
 

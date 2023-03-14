@@ -32,7 +32,7 @@ describe('NoteController', () => {
       mockRequest = {
         params: {},
         query: {
-          someParam: "some value"
+          title: "some value"
         },
         body: {},
       };
@@ -43,7 +43,7 @@ describe('NoteController', () => {
 
       await noteController.getNotes(mockRequest as Request, mockResponse as Response);
 
-      expect(noteServiceSpyGet).toHaveBeenCalledWith({ ...mockRequest.query });
+      expect(noteServiceSpyGet).toHaveBeenCalledWith();
       expect(mockResponse.status).not.toHaveBeenCalled();
       expect(mockResponse.json).toHaveBeenCalledWith(notesDummyData);
     });
