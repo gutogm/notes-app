@@ -6,32 +6,69 @@ This is the backend server for a notes app.
 Installation
 ------------
 
-First, install [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/).
-
-Then clone repository with:
-
-```bash
-git clone https://github.com/gutogm/notes-app.git
-cd notes-app/note-api
-```
-
-Install dependencies and start the server:
+1.  First, ensure that [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/) are installed in your machine.
+2.  Clone this repository with:
 
 ```bash
-npm install
-npm run start
+$ git clone https://github.com/gutogm/notes-app.git
+$ cd notes-app/note-api
 ```
 
-The API will be available at `http://localhost:3000`.
+3.  Install dependencies using this command:
+    
+    ```bash
+    $ npm install
+    ```
+    
+4.  Start the server:
+    
+    ```bash
+    $ npm run start
+    ```
+    
+5.  The API will be available at `http://localhost:3000`.
+    
 
 Endpoints
 ---------
 
 ### GET /notes
 
-Get all notes.
+Retreives all notes.
 
-Response:
+#### Query Parameters
+
+Parameter
+
+Type
+
+Description
+
+title
+
+string
+
+Used to filter titles.
+
+skip
+
+integer
+
+Number of items to skip
+
+limit
+
+integer
+
+Size of returned items
+
+#### Example Request
+
+```json
+GET http://localhost:3000/notes
+```
+
+#### Example Response
 
 ```json
 [
@@ -45,9 +82,15 @@ Response:
 
 ### GET /notes/:id
 
-Get a specific note.
+Retrieves a single note based on its ID.
 
-Response:
+#### Example Request
+
+```json
+GET http://localhost:3000/notes/5fc291cc306247c797afb2af
+```
+
+#### Example Response
 
 ```json
 {
@@ -59,18 +102,20 @@ Response:
 
 ### POST /notes
 
-Create a new note.
+Creates a new note with the supplied information.
 
-Request:
+#### Example Request
 
 ```json
+POST http://localhost:3000/notes
+
 {
   "title": "New note",
   "content": "Content of the new note"
 }
 ```
 
-Response:
+#### Example Response
 
 ```json
 {
@@ -82,18 +127,20 @@ Response:
 
 ### PUT /notes/:id
 
-Update a specific note.
+Updates an existing note with the supplied information.
 
-Request:
+#### Example Request
 
 ```json
+PUT http://localhost:3000/notes/5fc291cc306247c797afb2af
+
 {
   "title": "Updated note",
   "content": "Content of the updated note"
 }
 ```
 
-Response:
+#### Example Response
 
 ```json
 {
@@ -105,9 +152,15 @@ Response:
 
 ### DELETE /notes/:id
 
-Delete a specific note.
+Deletes an existing note with the supplied ID.
 
-Response:
+#### Example Request
+
+```json
+DELETE http://localhost:3000/notes/5fc291cc306247c797afb2af
+```
+
+#### Example Response
 
 ```json
 {
@@ -115,4 +168,19 @@ Response:
   "title": "Test note",
   "content": "Content of a test note",
 }
+```
+
+Running the Tests
+-----------------
+
+To run tests, run:
+
+```bash
+npm run test
+```
+
+To measure the code coverage, run:
+
+```bash
+npm run coverage
 ```
